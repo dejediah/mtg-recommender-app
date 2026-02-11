@@ -1,0 +1,60 @@
+.search-results-list {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.search-result-item {
+    border-bottom: 1px solid #1a1a1a;
+    padding: 10px;
+}
+
+.search-result-item:hover{
+    background-color: #dadada;
+    cursor: pointer;
+}
+
+.card-name {
+    color: #1a1a1a; /* Dark gray/black */
+    font-weight: bold;
+    font-family: 'Beleren Bold', sans-serif;
+}
+
+.card-mana-cost {
+    color: #555; /* Medium gray */
+    font-size: 0.85rem;
+}
+/* Wrapper ensures the preview stays relative to the list */
+.search-results-list-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+
+/* The floating preview */
+.search-preview-window {
+    position: absolute;
+    left: 105%; /* Pushes it to the right of the list */
+    top: 0;
+    width: 200px; /* Small "peek" size */
+    z-index: 1000;
+    pointer-events: none; /* So it doesn't block mouse movements */
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.search-preview-window img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    border: 2px solid #333;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}

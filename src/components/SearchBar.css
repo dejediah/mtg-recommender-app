@@ -1,0 +1,29 @@
+.input-wrapper{
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    height: 2.5rem;
+    padding: 0 15px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+}
+
+input {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1.25rem;
+    width: 100%;
+    margin-left: 10px;
+    font-family: 'Beleren Bold', sans-serif;
+}
+
+input:focus{
+    outline: none;
+}
+
+#search-icon{
+    color: rgb(88, 88, 88);
+    font-size: 1.5rem;
+}

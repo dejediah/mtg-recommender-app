@@ -1,0 +1,127 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+
+
+.close-btn {
+    position: absolute;
+    top: -15px;      /* Pulls it slightly above the modal edge */
+    right: -15px;    /* Pulls it slightly outside the modal edge */
+    width: 40px;
+    height: 40px;
+    background-color: #d4af37; /* A nice MTG Gold/Bronze */
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: all 0.2s ease;
+    z-index: 10010; /* Ensure it stays above everything */
+}
+
+.close-btn:hover {
+    background-color: #f1d37e; /* Lighter gold */
+    transform: scale(1.1) rotate(90deg); /* Slight spin and grow */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+}
+
+.close-btn:active {
+    transform: scale(0.95);
+}
+
+.modal-content {
+  background: #2a2a2a;
+  color: white;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 900px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-body {
+  display: flex;
+  gap: 30px;
+}
+
+.modal-image-container {
+    perspective: 1000px;
+    width: 350px; /* Adjust based on your preferred zoom size */
+}
+
+.modal-scene {
+    width: 100%;
+    height: 490px; /* Standard MTG aspect ratio based on width */
+    position: relative;
+}
+
+.modal-flipper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added a slight 'bounce' */
+}
+
+.modal-scene.is-flipped .modal-flipper {
+    transform: rotateY(180deg);
+}
+
+.modal-card-face {
+    position: absolute; /* Stack them on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back of the image */
+    -webkit-backface-visibility: hidden;
+    border-radius: 4.75%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.modal-card-face.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.modal-card-face.back {
+    transform: rotateY(180deg);
+}
+
+.modal-info {
+    background-color: #202020;
+    border-radius: 10px;
+    flex: 1;
+    max-height: 80vh; 
+    overflow-y: auto; /* Scroll the text if it's a wordy card */
+    padding: 10px;
+    text-align: justify;
+}
+
+.card-text-box {
+  background: #dbd3bf;
+  color: #373737; /* MTG Gold */
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+  white-space: pre-wrap; /* Keeps line breaks from the API */
+}
+
+.card-text-box p {
+    white-space: pre-wrap; /* This tells the browser to respect line breaks from the API */
+    line-height: 1.5;
+    font-family: 'Beleren Bold', sans-serif;
+}
