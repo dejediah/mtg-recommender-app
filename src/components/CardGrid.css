@@ -7,6 +7,44 @@
     box-sizing: border-box;
 }
 
+.card-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.extras-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 40px 0 20px 0;
+  color: #666;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* This creates the lines on either side of the "Tokens & Extras" text */
+.extras-divider::before,
+.extras-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #444;
+}
+
+.extras-divider:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.extras-divider:not(:empty)::after {
+  margin-left: .25em;
+}
+
+.extras-grid {
+  opacity: 0.85; /* Makes them look slightly secondary */
+}
+
 .card-container {
     perspective: 1200px; 
     display: flex;

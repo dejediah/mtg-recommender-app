@@ -52,13 +52,41 @@ return (
 };
 
 export const CardGrid = ({ cards, setSelectedCard }) => {
+  // 1. Filter the incoming 'cards' prop
+  const mainCards = cards.filter(card => 
+      !['token', 'emblem', 'art_series'].includes(card.layout)
+  );
+    
+  const extraCards = cards.filter(card => 
+      ['token', 'emblem', 'art_series'].includes(card.layout)
+  );
+
   return (
-    <div className="card-grid">
-      {cards.map((card) => (
-        <div key={card.id} onClick={() => setSelectedCard(card)}> 
-            <Card card={card} />
+    <div className="card-grid-wrapper">
+      {/* SECTION 1: MAIN CARDS */}
+      <div className="card-grid">
+        {mainCards.map((card) => (
+          <div key={card.id} onClick={() => setSelectedCard(card)}> 
+              <Card card={card} />
+          </div>
+        ))}
+      </div>
+
+      {/* SECTION 2: EXTRAS (Only renders if extras exist) */}
+      {extraCards.length > 0 && (
+        <div className="extras-container">
+          <div className="extras-divider">
+            <span>Tokens & Extras</span>
+          </div>
+          <div className="card-grid extras-grid">
+            {extraCards.map((card) => (
+              <div key={card.id} onClick={() => setSelectedCard(card)}> 
+                  <Card card={card} />
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
+      )}
     </div>
   );
 };

@@ -26,7 +26,7 @@ export const SearchBar = ({ setResults, setGridResults }) => {
                 if (abortControllerRef.current) {
                     abortControllerRef.current.abort();
                 }
-                const query = encodeURIComponent(`name:"^${input}"`);
+                const query = encodeURIComponent(`name:"${input}" include:extras`);
                 fetch(`https://api.scryfall.com/cards/search?q=${query}`)
                     .then(res => res.json())
                     .then(json => {

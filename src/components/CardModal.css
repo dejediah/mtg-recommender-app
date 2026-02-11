@@ -42,13 +42,37 @@
 }
 
 .modal-content {
-  background: #2a2a2a;
-  color: white;
-  padding: 40px;
-  border-radius: 15px;
-  max-width: 900px;
-  width: 90%;
-  position: relative;
+    /* Fallbacks */
+    --color-1: #1a1a1a; --color-2: #1a1a1a; --color-3: #1a1a1a; --color-4: #1a1a1a; --color-5: #1a1a1a;
+
+    background-color: #1a1a1a;
+    background-image: 
+        radial-gradient(at 0% 0%, var(--color-1) 0%, transparent 50%),
+        radial-gradient(at 100% 0%, var(--color-2) 0%, transparent 50%),
+        radial-gradient(at 100% 100%, var(--color-3) 0%, transparent 50%),
+        radial-gradient(at 0% 100%, var(--color-4) 0%, transparent 50%),
+        radial-gradient(at 50% 50%, var(--color-5) 0%, transparent 50%);
+    
+    background-size: 150% 150%;
+    animation: swirly-bg 15s ease-in-out infinite;
+    
+    /* Ensure text readability */
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 900px;
+    width: 90%;
+    position: relative;
+    overflow: visible;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes swirly-bg {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
 }
 
 .modal-body {
@@ -102,7 +126,7 @@
 }
 
 .modal-info {
-    background-color: #202020;
+    background: rgba(32, 32, 32, 0.75); /* Semi-transparent background */
     border-radius: 10px;
     flex: 1;
     max-height: 80vh; 
@@ -112,14 +136,13 @@
 }
 
 .card-text-box {
-  background: #dbd3bf;
-  color: #373737; /* MTG Gold */
-  padding: 15px;
-  border-radius: 8px;
-  margin: 20px 0;
-  white-space: pre-wrap; /* Keeps line breaks from the API */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .card-text-box p {
     white-space: pre-wrap; /* This tells the browser to respect line breaks from the API */
     line-height: 1.5;

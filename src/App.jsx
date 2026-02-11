@@ -15,6 +15,8 @@ function App() {
   const openModal = (card) => setSelectedCard(card);
   const closeModal = () => setSelectedCard(null);
 
+
+  // Loading screen logic: Wait for the entire page to load, then show the app after a short delay for better UX
   useEffect(() => {
     const handleLoad = () => {
       setTimeout(() => 
