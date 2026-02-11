@@ -35,7 +35,9 @@ export const SearchResultsList = ({ results, setGridResults, setResults, setSele
             {hoveredCard && (
                 <div className="search-preview-window">
                     <img 
-                        src={hoveredCard.card_faces ? hoveredCard.card_faces[0].image_uris.normal : hoveredCard.image_uris?.normal} 
+                        src={hoveredCard.card_faces 
+                            ? hoveredCard.card_faces[0].image_uris.normal 
+                            : hoveredCard.image_uris?.normal} 
                         alt="preview" 
                     />
                 </div>
