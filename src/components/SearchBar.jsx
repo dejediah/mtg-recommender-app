@@ -23,6 +23,9 @@ export const SearchBar = ({ setResults, setGridResults }) => {
 
     const handleKeyDown = (e) => {
             if (e.key === 'Enter') {
+                if (abortControllerRef.current) {
+                    abortControllerRef.current.abort();
+                }
                 const query = encodeURIComponent(`name:"^${input}"`);
                 fetch(`https://api.scryfall.com/cards/search?q=${query}`)
                     .then(res => res.json())
@@ -30,6 +33,11 @@ export const SearchBar = ({ setResults, setGridResults }) => {
                         if (json && json.data) {
                             setGridResults(json.data);
                             setResults([]); // Hide the dropdown
+                        }
+                    })
+                    .catch(err => {
+                        if (err.name !== 'AbortError') {
+                            console.error("Search error:", err);
                         }
                     });
             }
